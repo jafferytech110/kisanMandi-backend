@@ -1,21 +1,26 @@
 import express from "express";
-import pool from '../db.js';
-import bcrypt from 'bcrypt';
-import { authenticateToken } from "../middleware/authorization.js";
+import pool from "../db.js";
+import bcrypt from "bcrypt";
+import { jwtTokens } from "../utils/jwt-helpers.js"; // Import your jwtTokens function
+import {authenticateToken} from '../middleware/authorization.js';
 
+
+let refreshTokens = [];
 const router = express.Router();
 
-// authenticating users only can see this
-router.get('/', authenticateToken, async (req, res) => {
+// checking authenticated user
+router.get('/',authenticateToken, async (req, res) => {
   try {
-    res.json({users: 'someUser'})
+    console.log(req.cookies);
+    const users = await pool.query('SELECT * FROM users');
+    res.json({users : users.rows});
   } catch (error) {
-    res.status(500).json({error: error.message})
+    res.status(500).json({error: error.message});
   }
-})
+});
 
 // Route for user registration
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { phone_number, password, first_name, last_name } = req.body;
 
@@ -24,11 +29,13 @@ router.post('/', async (req, res) => {
       SELECT * FROM Users WHERE phone_number = $1
     `;
 
-    const existingUser = await pool.query(checkPhoneNumberQuery, [phone_number]);
+    const existingUser = await pool.query(checkPhoneNumberQuery, [
+      phone_number,
+    ]);
 
     if (existingUser.rows.length > 0) {
       // Phone number already exists, throw an error
-      return res.status(400).json({ error: 'Phone number already exists.' });
+      return res.status(400).json({ error: "Phone number already exists." });
     }
 
     // Hash the user's password before storing it in the database
@@ -44,11 +51,16 @@ router.post('/', async (req, res) => {
     const values = [phone_number, hashedPassword, first_name, last_name];
     const result = await pool.query(insertUserQuery, values);
 
-    // Return the newly registered user
-    res.status(201).json(result.rows[0]);
+    // Generate JWT tokens for the newly registered user
+    let tokens = jwtTokens(result.rows[0]); // Pass the user data from the result
+
+    // Include phone_number in the response along with tokens and success message
+    res.status(201).json({ phone_number, ...tokens, success: true });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while registering the user.' });
+    res
+      .status(500)
+      .json({ error: "An error occurred while registering the user." });
   }
 });
 

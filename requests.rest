@@ -1,8 +1,8 @@
-POST http://localhost:5000/api/register
-Content-Type: application/json
+POST http://192.168.1.20:5000/api/register
+content-Type: application/json
 
 {
-    "phone_number": "+923461234567", 
+    "phone_number": "+92336123456789", 
     "password": "Something12345",
     "first_name":"Sarfaraz",
     "last_name":"Jaffery"
@@ -10,9 +10,9 @@ Content-Type: application/json
 
 ###
 POST http://localhost:5000/api/login
-Content-Type: application/json
+content-Type: application/json
 
 {
-    "phone_number": "+923461234567", 
+    "phone_number": "+923471234567", 
     "password": "Something12345"
 }

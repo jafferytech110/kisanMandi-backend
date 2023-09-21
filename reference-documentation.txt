@@ -1,0 +1,143 @@
+Certainly! Here are the complete `.md` files for both registration and login API references:
+
+**User Registration API Documentation**
+
+```markdown
+# User Registration API Reference
+
+## Endpoint
+
+```
+POST /api/register
+```
+
+## Description
+
+Registers a new user with the provided information.
+
+## Request Payload
+
+- **phone_number (String)**: The user's phone number.
+- **password (String)**: The user's password.
+- **first_name (String)**: The user's first name.
+- **last_name (String)**: The user's last name.
+
+## Response Payload
+
+- **Status Code**: 201 (Created)
+
+### Success Response
+
+- **Success (Boolean)**: `true`
+- **Phone Number (String)**: The registered phone number.
+- **accessToken (String)**: A JWT access token for user authentication.
+- **refreshToken (String)**: A JWT refresh token for refreshing the access token.
+
+### Example Success Response
+
+```json
+{
+  "success": true,
+  "phone_number": "string",
+  "accessToken": "string",
+  "refreshToken": "string"
+}
+```
+
+### Error Responses
+
+- **Status Code**: 400 (Bad Request)
+
+```json
+{
+  "error": "Phone number already exists."
+}
+```
+
+- **Status Code**: 500 (Internal Server Error)
+
+```json
+{
+  "error": "An error occurred while registering the user."
+}
+```
+
+## Usage
+
+To register a new user, make a POST request to the `/api/register` endpoint with the required payload.
+
+---
+
+**User Login API Documentation**
+
+```markdown
+# User Login API Reference
+
+## Endpoint
+
+```
+POST /api/login
+```
+
+## Description
+
+Logs in a user with the provided phone number and password.
+
+## Request Payload
+
+- **phone_number (String)**: The user's phone number.
+- **password (String)**: The user's password.
+
+## Response Payload
+
+- **Status Code**: 200 (OK)
+
+### Success Response
+
+- **Phone Number (String)**: The phone number of the logged-in user.
+- **accessToken (String)**: A JWT access token for user authentication.
+- **refreshToken (String)**: A JWT refresh token for refreshing the access token.
+- **message (String)**: A success message.
+
+### Example Success Response
+
+```json
+{
+  "phone_number": "string",
+  "accessToken": "string",
+  "refreshToken": "string",
+  "message": "Login successful"
+}
+```
+
+### Error Responses
+
+- **Status Code**: 401 (Unauthorized)
+
+```json
+{
+  "error": "User not found"
+}
+```
+
+```json
+{
+  "error": "Invalid password"
+}
+```
+
+- **Status Code**: 500 (Internal Server Error)
+
+```json
+{
+  "error": "An error occurred while logging in."
+}
+```
+
+## Usage
+
+To log in a user, make a POST request to the `/api/login` endpoint with the required payload.
+
+---
+
+These documents provide detailed information about the registration and login APIs, including endpoints, request payload, and response payload for each API, as well as examples of success and error responses.

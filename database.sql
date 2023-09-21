@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Notifications (
 -- Add any additional constraints, indexes, or triggers as needed.
 
 --psql -U postgres
---\c kisanMandiDB
+--\c kisanmandidb
 --\dt
 
 -- End of SQL statements

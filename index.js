@@ -17,7 +17,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 // server
 const app = express()
 const PORT = process.env.PORT || 5000
-const corsOptions = {Credential: true, origin: process.env.URL || '*'}
+const corsOptions = {
+    credentials: true, // Allow cookies and authentication headers to be sent
+    origin: process.env.URL || '*', // Replace with your frontend URL or '*' for any origin
+  };
 
 // middleware
 app.use(cors(corsOptions))
