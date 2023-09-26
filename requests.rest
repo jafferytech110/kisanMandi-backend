@@ -2,7 +2,7 @@ POST http://192.168.1.20:5000/api/register
 content-Type: application/json
 
 {
-    "phone_number": "+92336123456789", 
+    "phone_number": "03361234568", 
     "password": "Something12345",
     "first_name":"Sarfaraz",
     "last_name":"Jaffery"
@@ -13,6 +13,18 @@ POST http://localhost:5000/api/login
 content-Type: application/json
 
 {
-    "phone_number": "+923471234567", 
+    "phone_number": "03361234568", 
     "password": "Something12345"
 }
+
+###
+Get http://localhost:5000/api/profile/fullname
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NTY2MTc1OSwiZXhwIjoxNjk1NjY1MzU5fQ.JUGt_L6gbzQ551JShUNFClte0Lw4ZOKbLum0C6MD0HA
+
+###
+Get http://localhost:5000/api/login/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTcwMTY3OSwiZXhwIjoxNjk1NzAyMDM5fQ.fnvddDYpCOElQXgdQNrCTX7fzoxmFzLGhMZhAeezSfw
+
+###
+GET http://localhost:5000/api/profile/checkcnic
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NTY5MjQxNCwiZXhwIjoxNjk1Njk2MDE0fQ.yO6jJMPlBqvMwjg3276rqlJYKWUzHhNXRdHJApc72ow

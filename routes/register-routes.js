@@ -2,22 +2,12 @@ import express from "express";
 import pool from "../db.js";
 import bcrypt from "bcrypt";
 import { jwtTokens } from "../utils/jwt-helpers.js"; // Import your jwtTokens function
-import {authenticateToken} from '../middleware/authorization.js';
+
 
 
 let refreshTokens = [];
 const router = express.Router();
 
-// checking authenticated user
-router.get('/',authenticateToken, async (req, res) => {
-  try {
-    console.log(req.cookies);
-    const users = await pool.query('SELECT * FROM users');
-    res.json({users : users.rows});
-  } catch (error) {
-    res.status(500).json({error: error.message});
-  }
-});
 
 // Route for user registration
 router.post("/", async (req, res) => {
@@ -38,7 +28,8 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Phone number already exists." });
     }
 
-    // Hash the user's password before storing it in the database
+    // Hash the user's password before storing it in the database, callback function can also be passed if 
+    // something wrong occurs
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the user into the Users table
@@ -47,15 +38,15 @@ router.post("/", async (req, res) => {
       VALUES ($1, $2, $3, $4)
       RETURNING *
     `;
-
     const values = [phone_number, hashedPassword, first_name, last_name];
     const result = await pool.query(insertUserQuery, values);
 
     // Generate JWT tokens for the newly registered user
     let tokens = jwtTokens(result.rows[0]); // Pass the user data from the result
+    res.cookie('refresh_token', tokens.refreshToken, { httpOnly: true });
 
     // Include phone_number in the response along with tokens and success message
-    res.status(201).json({ phone_number, ...tokens, success: true });
+    res.status(201).json({ phone_number: phone_number, ...tokens, success: true });
   } catch (error) {
     console.error(error);
     res

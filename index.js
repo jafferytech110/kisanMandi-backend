@@ -6,6 +6,8 @@ import {dirname, join} from 'path'
 import { fileURLToPath } from "url";
 import registerRouter from './routes/register-routes.js';
 import loginRouter from './routes/login-routes.js'
+import profileRouter from './routes/profile-routes.js'; 
+
 
 // looking for dotenv file and pulling env var
 dotenv.config()
@@ -19,7 +21,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const corsOptions = {
     credentials: true, // Allow cookies and authentication headers to be sent
-    origin: process.env.URL || '*', // Replace with your frontend URL or '*' for any origin
+    origin: process.env.URL || '*', 
   };
 
 // middleware
@@ -32,6 +34,8 @@ app.use(cookieParser())
 app.use('/', express.static(join(__dirname,'public')))
 app.use('/api/register', registerRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/profile', profileRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`)

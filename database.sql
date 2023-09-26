@@ -38,6 +38,51 @@ CREATE TABLE IF NOT EXISTS Notifications (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- profile section related tables and modification to current table
+CREATE TABLE IF NOT EXISTS UserAddresses (
+  address_id SERIAL PRIMARY KEY,
+  user_id VARCHAR(15) REFERENCES Users(phone_number),
+  address VARCHAR(255),
+  city VARCHAR(255),
+  province VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CNIC of user in the users table
+ALTER TABLE Users
+ADD COLUMN cnic_number VARCHAR(20);
+
+-- User's farms table
+CREATE TABLE IF NOT EXISTS UserFarms (
+  farm_id SERIAL PRIMARY KEY,
+  user_id VARCHAR(15) REFERENCES Users(phone_number),
+  location VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Markets table
+CREATE TABLE IF NOT EXISTS Markets (
+  market_id SERIAL PRIMARY KEY,
+  market_name VARCHAR(255) NOT NULL,
+  location VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- user's market or markets
+CREATE TABLE IF NOT EXISTS UserMarkets (
+  user_market_id SERIAL PRIMARY KEY,
+  user_id VARCHAR(15) REFERENCES Users(phone_number),
+  market_id INT REFERENCES Markets(market_id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
 -- Add any additional constraints, indexes, or triggers as needed.
 
 --psql -U postgres
