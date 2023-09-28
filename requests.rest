@@ -19,7 +19,7 @@ content-Type: application/json
 
 ###
 Get http://localhost:5000/api/profile/fullname
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NTY2MTc1OSwiZXhwIjoxNjk1NjY1MzU5fQ.JUGt_L6gbzQ551JShUNFClte0Lw4ZOKbLum0C6MD0HA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
 
 ###
 Get http://localhost:5000/api/login/refresh
@@ -27,4 +27,72 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiO
 
 ###
 GET http://localhost:5000/api/profile/checkcnic
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NTY5MjQxNCwiZXhwIjoxNjk1Njk2MDE0fQ.yO6jJMPlBqvMwjg3276rqlJYKWUzHhNXRdHJApc72ow
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+###
+GET http://localhost:5000/api/profile/userHomeAddress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+###
+POST http://localhost:5000/api/profile/userHomeAddress
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+{
+    "address": "C 109 Rafa e aam Society Malir Halt",
+    "city": "Karachi",
+    "province": "Sindh",
+    "country": "Pakistan"
+}
+
+###
+GET http://localhost:5000/api/profile/markets
+
+###
+POST http://localhost:5000/api/profile/usermarkets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+{
+    "market_name": "Hyderabad, New Sabzi Mandi"
+}
+
+###
+GET http://localhost:5000/api/profile/usermarkets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+###
+GET http://localhost:5000/api/profile/userFarms
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+###
+POST http://localhost:5000/api/profile/userFarms
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+{
+    "area": 20,
+    "address": "Near Hotel Karwana",
+    "city": "Gharo",
+    "province": "Sindh",
+    "country": "Pakistan"
+}
+
+###
+PUT http://localhost:5000/api/profile/userFarms/7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+{
+    "area": 16,
+    "address": "Near Hotel Karwana",
+    "city": "Gharo",
+    "province": "Sindh",
+    "country": "Pakistan"
+}
+
+###
+DELETE http://localhost:5000/api/profile/userFarms/13
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+
+

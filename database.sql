@@ -49,9 +49,15 @@ CREATE TABLE IF NOT EXISTS UserAddresses (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+
 -- CNIC of user in the users table
 ALTER TABLE Users
 ADD COLUMN cnic_number VARCHAR(20);
+
+-- Country to user Address
+ALTER TABLE UserAddresses
+ADD country VARCHAR(255);
 
 -- User's farms table
 CREATE TABLE IF NOT EXISTS UserFarms (
@@ -61,6 +67,17 @@ CREATE TABLE IF NOT EXISTS UserFarms (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Modify the 'UserFarms' table
+ALTER TABLE UserFarms
+DROP COLUMN location,
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN province VARCHAR(255),
+ADD COLUMN country VARCHAR(255),
+ADD COLUMN area DECIMAL(20, 2) NOT NULL,
+ADD COLUMN latitude DECIMAL(20, 16),
+ADD COLUMN longitude DECIMAL(20, 16);
 
 -- Markets table
 CREATE TABLE IF NOT EXISTS Markets (
@@ -72,6 +89,11 @@ CREATE TABLE IF NOT EXISTS Markets (
 );
 
 
+ALTER TABLE Markets
+ADD COLUMN latitude DECIMAL(20, 16),
+ADD COLUMN longitude DECIMAL(20, 16);
+
+
 -- user's market or markets
 CREATE TABLE IF NOT EXISTS UserMarkets (
   user_market_id SERIAL PRIMARY KEY,
@@ -80,6 +102,7 @@ CREATE TABLE IF NOT EXISTS UserMarkets (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 
