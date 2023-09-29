@@ -95,4 +95,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiO
 DELETE http://localhost:5000/api/profile/userFarms/13
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
 
-
+###
+GET http://localhost:5000/api/weather/userCities
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTk2NzYzMywiZXhwIjoxNjk2MDU0MDMzfQ.ThkAiR3VtAqlCbbVTMOC2vv-Qm2p9fvk5avWUgxMNqI
