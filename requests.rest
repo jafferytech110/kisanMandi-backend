@@ -2,7 +2,7 @@ POST http://192.168.1.20:5000/api/register
 content-Type: application/json
 
 {
-    "phone_number": "03361234568", 
+    "phone_number": "03361234569", 
     "password": "Something12345",
     "first_name":"Sarfaraz",
     "last_name":"Jaffery"
@@ -13,13 +13,13 @@ POST http://localhost:5000/api/login
 content-Type: application/json
 
 {
-    "phone_number": "03361234568", 
+    "phone_number": "03361234569", 
     "password": "Something12345"
 }
 
 ###
 Get http://localhost:5000/api/profile/fullname
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OSIsImlhdCI6MTY5Nzk4NTA4MSwiZXhwIjoxNjk4MDcxNDgxfQ.hI4zmQTApTcwjhWpPTnSSvmqGP_VLmkDHTgps3tKiu0
 
 ###
 Get http://localhost:5000/api/login/refresh
@@ -63,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiO
 
 ###
 GET http://localhost:5000/api/profile/userFarms
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTgyODgzMywiZXhwIjoxNjk1OTE1MjMzfQ.HQ4I2yg28--XvsRSWb1GmAxScQ5T6IaSQptq-2deOP8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NzcxOTM4MywiZXhwIjoxNjk3ODA1NzgzfQ.3Y4zEpIkIhqVH2Y4MrerFWwPRZ93CbDv0V5XNj8oRPI
 
 ###
 POST http://localhost:5000/api/profile/userFarms
@@ -97,4 +97,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiO
 
 ###
 GET http://localhost:5000/api/weather/userCities
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OCIsImlhdCI6MTY5NTk2NzYzMywiZXhwIjoxNjk2MDU0MDMzfQ.ThkAiR3VtAqlCbbVTMOC2vv-Qm2p9fvk5avWUgxMNqI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OSIsImlhdCI6MTY5Nzk5Nzg2NCwiZXhwIjoxNjk4MDg0MjY0fQ.pvBAqCldUNj7EaOUrzTaVvFdTbmlGPbdpNkvZaplzTY
+
+###
+GET http://localhost:5000/api/crops/usercrops
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIoiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5Nzg5NTM2NSwiZXhwIjoxNjk3OTgxNzY1fQ.VYSbdch9tun_Dv3GeDm_kgdk8zB13MYPG23GHF7agbs
+
+###
+POST http://localhost:5000/api/crops/usercrops
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NzcxOTM4MywiZXhwIjoxNjk3ODA1NzgzfQ.3Y4zEpIkIhqVH2Y4MrerFWwPRZ93CbDv0V5XNj8oRPI
+
+{
+    "crop_id": 17,
+    "farm_id": 5,
+    "area_acres": 20,
+    "expected_yield_kg": 40,
+    "sowing_date": "2023-11-15",
+    "harvest_date": "2023-12-15",
+    "total_harvesting_days": 60
+}
+
+###
+GET http://localhost:5000/api/crops/cropnames
+
+###
+GET http://192.168.1.20:5000/api/charts/crop-prices?crop_id=3&start_date=2023-10-01&end_date=2023-10-10
+
+Headers:
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIoiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5Nzg5NTM2NSwiZXhwIjoxNjk3OTgxNzY1fQ.VYSbdch9tun_Dv3GeDm_kgdk8zB13MYPG23GHF7agbs
+

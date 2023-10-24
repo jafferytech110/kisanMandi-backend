@@ -5,7 +5,6 @@ import { authenticateToken } from "../middleware/authorization.js"; // Import yo
 
 const router = express.Router();
 
-// Define the route to get the user's first name and last name
 router.get("/fullname", authenticateToken, async (req, res) => {
   try {
     // Get the user's phone number from the authentication middleware
@@ -22,8 +21,10 @@ router.get("/fullname", authenticateToken, async (req, res) => {
 
     const { first_name, last_name } = userInfoResult.rows[0];
 
-    // Send the user's first name and last name as a response
-    res.status(200).json({ first_name, last_name });
+    // Format the full name with the first letter of both first_name and last_name capitalized
+    const formattedFullName = `${capitalizeFirstLetter(first_name)} ${capitalizeFirstLetter(last_name)}`;
+
+    res.status(200).json({ full_name: formattedFullName });
   } catch (error) {
     console.error(error);
     res
@@ -31,6 +32,12 @@ router.get("/fullname", authenticateToken, async (req, res) => {
       .json({ error: "An error occurred while fetching user profile data." });
   }
 });
+
+// Function to capitalize the first letter of a string
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 // Define the route to check if CNIC number is provided
 router.get("/checkcnic", authenticateToken, async (req, res) => {

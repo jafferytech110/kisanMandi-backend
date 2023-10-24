@@ -8,7 +8,8 @@ import registerRouter from './routes/register-routes.js';
 import loginRouter from './routes/login-routes.js'
 import profileRouter from './routes/profile-routes.js'; 
 import weatherRouter from './routes/weather-routes.js'
-
+import cropsRouter from './routes/crops-routes.js';
+import chartRouter from './routes/chart-routes.js';
 // looking for dotenv file and pulling env var
 dotenv.config()
 
@@ -35,7 +36,9 @@ app.use('/', express.static(join(__dirname,'public')))
 app.use('/api/register', registerRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/profile', profileRouter);
-app.use('/api/weather', weatherRouter)
+app.use('/api/weather', weatherRouter);
+app.use('/api/crops', cropsRouter);
+app.use('/api/charts', chartRouter);
 
 
 app.listen(PORT, () => {

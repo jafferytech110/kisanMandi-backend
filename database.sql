@@ -73,6 +73,10 @@ CREATE TABLE IF NOT EXISTS UserCrops (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Adding new Column to 'UserCrops' Table
+ALTER TABLE UserCrops
+ADD COLUMN total_harvesting_days DECIMAL(20, 2);
+
 -- Create a new table to manage the relationship between UserCrops and Markets
 CREATE TABLE IF NOT EXISTS UserCropsMarkets (
   user_crop_id INT REFERENCES UserCrops(user_crop_id),
@@ -191,6 +195,34 @@ VALUES
   ('Turnip', 'The turnip or white turnip is a root vegetable commonly grown in temperate climates worldwide for its white, fleshy taproot. The word turnip is a compound of turn as in turned/rounded on a lathe and neep, derived from Latin napus, the word for the plant.', 'Sindh, Punjab', 'Pakistan', 'August to November', '60-90 days', 'N/A', 'Shaljam', 'شلجم');
   -- Add more rows here
   ;
+-- Create the Daily Crop Prices table
+CREATE TABLE IF NOT EXISTS daily_crop_prices (
+    id SERIAL PRIMARY KEY,
+    crop_id INT REFERENCES Crops(crop_id),  -- Reference to your crops table
+    price NUMERIC,  -- The price of the crop
+    date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS daily_crop_prices_utc (
+    id SERIAL PRIMARY KEY,
+    crop_id INT REFERENCES Crops(crop_id),  -- Reference to your crops table
+    price NUMERIC,  -- The price of the crop
+    date TIMESTAMP WITH TIME ZONE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO daily_crop_prices_utc (crop_id, price, date)
+SELECT crop_id, price, date AT TIME ZONE 'Europe/London' AT TIME ZONE 'UTC'
+FROM daily_crop_prices;
+
+-- First, drop the existing daily_crop_prices table
+DROP TABLE IF EXISTS daily_crop_prices;
+
+-- Next, rename the daily_crop_prices_utc table to daily_crop_prices
+ALTER TABLE daily_crop_prices_utc RENAME TO daily_crop_prices;
+
+
 
 
 
