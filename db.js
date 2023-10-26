@@ -2,12 +2,21 @@ import pg from "pg";
 
 const { Pool } = pg;
 
+// let localPoolConfig = {
+//   user: "postgres",
+//   password: "*!3XIers",
+//   host: "localhost",
+//   port: "5432",
+//   database: "kisanmandidb",
+// };
+
 let localPoolConfig = {
-  user: "postgres",
+  user: "citus",
   password: "*!3XIers",
-  host: "localhost",
+  host: "c-kisanmandidb-cluster.bpaubmt7b4gh2r.postgres.cosmos.azure.com",
   port: "5432",
   database: "kisanmandidb",
+  ssl: { rejectUnauthorized: false }
 };
 
 const poolConfig = process.env.DATABASE_URL

@@ -222,9 +222,21 @@ DROP TABLE IF EXISTS daily_crop_prices;
 -- Next, rename the daily_crop_prices_utc table to daily_crop_prices
 ALTER TABLE daily_crop_prices_utc RENAME TO daily_crop_prices;
 
+-- adding crop_demand_table
+CREATE TABLE crop_demand_table (
+    forecast_id SERIAL PRIMARY KEY,
+    crop_id INT REFERENCES crops(crop_id) NOT NULL,
+    gregorian_date TIMESTAMPTZ NOT NULL,
+    islamic_date TIMESTAMPTZ NOT NULL,
+    demand_quantity NUMERIC NOT NULL,
+    additional_information TEXT,
+    UNIQUE (crop_id, gregorian_date, islamic_date)
+);
 
 
 
+ALTER TABLE crops
+ADD COLUMN average_growth_time_days integer;
 
 
 -- Add any additional constraints, indexes, or triggers as needed.
