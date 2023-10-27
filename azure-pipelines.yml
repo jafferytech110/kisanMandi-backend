@@ -9,6 +9,12 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- name: ACCESS_TOKEN_SECRET
+  value: $(ACCESS_TOKEN_SECRET)
+- name: REFRESH_TOKEN_SECRET
+  value: $(REFRESH_TOKEN_SECRET)
+
 steps:
 - task: NodeTool@0
   inputs:
