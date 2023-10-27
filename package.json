@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
