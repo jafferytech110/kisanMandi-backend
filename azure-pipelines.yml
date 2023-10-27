@@ -9,11 +9,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  ACCESS_TOKEN_SECRET: '$(ACCESS_TOKEN_SECRET)'
-  REFRESH_TOKEN_SECRET: '$(REFRESH_TOKEN_SECRET)'
-
 steps:
+- task: PowerShell@2
+  inputs:
+    script: |
+      # Set the ACCESS_TOKEN_SECRET environment variable.
+      $env:ACCESS_TOKEN_SECRET = '$(ACCESS_TOKEN_SECRET)'
+
+      # Set the REFRESH_TOKEN_SECRET environment variable.
+      $env:REFRESH_TOKEN_SECRET = '$(REFRESH_TOKEN_SECRET)'
+  displayName: 'Set environment variables'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -23,6 +29,7 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
   env:
     ACCESS_TOKEN_SECRET: $(ACCESS_TOKEN_SECRET)
     REFRESH_TOKEN_SECRET: $(REFRESH_TOKEN_SECRET)
