@@ -8,6 +8,17 @@ content-Type: application/json
     "last_name":"Jaffery"
 }
 
+# https://kisanmandi.azurewebsites.net
+POST https://kisanmandi.azurewebsites.net/api/register
+content-Type: application/json
+
+{
+    "phone_number": "03361234569", 
+    "password": "Something12345",
+    "first_name":"Sarfaraz",
+    "last_name":"Jaffery"
+}
+
 ###
 POST http://localhost:5000/api/login
 content-Type: application/json
@@ -16,6 +27,17 @@ content-Type: application/json
     "phone_number": "03361234569", 
     "password": "Something12345"
 }
+
+
+###
+POST https://kisanmandi.azurewebsites.net/api/login
+content-Type: application/json
+
+{
+    "phone_number": "03361234569", 
+    "password": "Something12345"
+}
+
 
 ###
 Get http://localhost:5000/api/profile/fullname
