@@ -62,8 +62,8 @@ async function populateCropDemandTable() {
         const randomDemands = [140, 150, 160, 120, 180, 200];
 
         // Loop through crops (assuming crop IDs are from 1 to 29)
-        for (let cropId = 1; cropId <= 15; cropId++) {
-            let year = 2023;
+        for (let cropId = 1; cropId <= 29; cropId++) {
+            let year = 2024;
             let dayOfYear = 1; // Initialize the day of the year
 
             for (let day = 1; day <= 365; day++) {

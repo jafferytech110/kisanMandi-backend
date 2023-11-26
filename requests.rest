@@ -30,7 +30,7 @@ content-Type: application/json
 
 
 ###
-POST https://kisanmandi.azurewebsites.net/api/login
+POST http://localhost:5000/api/login
 content-Type: application/json
 
 {
@@ -40,8 +40,8 @@ content-Type: application/json
 
 
 ###
-Get http://localhost:5000/api/profile/fullname
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OSIsImlhdCI6MTY5Nzk4NTA4MSwiZXhwIjoxNjk4MDcxNDgxfQ.hI4zmQTApTcwjhWpPTnSSvmqGP_VLmkDHTgps3tKiu0
+Get https://kisanmandi.azurewebsites.net/api/profile/fullname
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OSIsImlhdCI6MTY5ODQ3NzA0NywiZXhwIjoxNjk4NTYzNDQ3fQ.k6Mj2k25GleQzEB44y62y6e6xXBMVMpzrF3I-jKQ19k
 
 ###
 Get http://localhost:5000/api/login/refresh
@@ -128,16 +128,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIoi
 ###
 POST http://localhost:5000/api/crops/usercrops
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM0MzM5NDA3NSIsImlhdCI6MTY5NzcxOTM4MywiZXhwIjoxNjk3ODA1NzgzfQ.3Y4zEpIkIhqVH2Y4MrerFWwPRZ93CbDv0V5XNj8oRPI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiIwMzM2MTIzNDU2OSIsImlhdCI6MTcwMDE0NDkzNiwiZXhwIjoxNzAwMjMxMzM2fQ.28EQgDlBiTObdUHDsAKKTXOzrrn66uBd00YsVyPU1ws
 
 {
-    "crop_id": 17,
+    "crop_id": 25,
     "farm_id": 5,
-    "area_acres": 20,
-    "expected_yield_kg": 40,
-    "sowing_date": "2023-11-15",
-    "harvest_date": "2023-12-15",
-    "total_harvesting_days": 60
+    "area_acres": 4,
+    "expected_yield_kg": 80,
+    "sowing_date": "2024-02-01",
+    "harvest_date": "2024-04-30",
+    "total_harvesting_days": 30
 }
 
 ###
