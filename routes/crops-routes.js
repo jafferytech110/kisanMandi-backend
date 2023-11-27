@@ -88,14 +88,13 @@ router.post("/usercrops", authenticateToken, async (req, res) => {
     // Calculate the proposed total area after adding the new crop
     const proposedTotalArea = totalUsedArea + area_acres;
 
-    // Perform checks against the farm's total area
-    if (proposedTotalArea > totalFarmArea) {
-      return res.status(400).json({
-        error: `Not enough space on the farm. Utilized: ${totalUsedArea} out of ${totalFarmArea} acres.`,
-      });
-    } else if (area_acres > totalFarmArea) {
+    if (area_acres > totalFarmArea) {
       return res.status(400).json({
         error: `Provided area (${area_acres} acres) is greater than the total farm area (${totalFarmArea} acres).`,
+      });
+    } else if (proposedTotalArea > totalFarmArea) {
+      return res.status(400).json({
+        error: `Not enough space on the farm. Utilized: ${totalUsedArea} out of ${totalFarmArea} acres. Please consider growing on ${totalFarmArea - totalAreaUsed} acres.`,
       });
     }
     
