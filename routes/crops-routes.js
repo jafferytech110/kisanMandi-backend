@@ -94,7 +94,7 @@ router.post("/usercrops", authenticateToken, async (req, res) => {
       });
     } else if (proposedTotalArea > totalFarmArea) {
       return res.status(400).json({
-        error: `Not enough space on the farm. Utilized: ${totalUsedArea} out of ${totalFarmArea} acres. Please consider growing on ${totalFarmArea - totalAreaUsed} acres.`,
+        error: `Not enough space on the farm. Utilized: ${totalUsedArea} out of ${totalFarmArea} acres. Please consider growing on ${totalFarmArea - totalUsedArea} acres.`,
       });
     }
     
